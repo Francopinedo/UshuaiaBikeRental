@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',      // <--- AÑADE ESTO (Genera archivos estáticos)
+  output: 'export',      
   images: {
-    unoptimized: true,   // <--- AÑADE ESTO (GitHub no soporta el optimizador de Next)
+    unoptimized: true,   
     domains: [],
   },
-  // basePath: '/UshuaiaBikeRental', // <--- Descomenta esto si las imágenes no cargan después
+  // basePath: '/UshuaiaBikeRental', // <---
 }
 
 module.exports = nextConfig

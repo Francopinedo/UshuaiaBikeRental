@@ -8,9 +8,9 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "AUTONO - La Movilidad del Futuro",
+  title: "Ushuaia Bike Rental",
   description:
-    "La experiencia de autoconducción más segura. Tecnología autónoma avanzada para el transporte del mañana.",
+    "Renta la bicicleta perfecta para tu aventura",
   generator: "v0.app",
   icons: {
     icon: [
