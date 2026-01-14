@@ -4,15 +4,22 @@ import Bicicleta from "@/models/Bicicleta";
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> } // 1. Cambiamos el tipo a Promise
 ) {
   try {
     await dbConnect();
-    const { id } = params;
-    await Bicicleta.findByIdAndDelete(id);
-    return NextResponse.json({ message: "Eliminada" }, { status: 200 });
+    
+    // 2. Usamos await para obtener los params
+    const { id } = await context.params; 
+    
+    const biciEliminada = await Bicicleta.findByIdAndDelete(id);
+
+    if (!biciEliminada) {
+      return NextResponse.json({ error: "Bicicleta no encontrada" }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: "Eliminada correctamente" }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: "Error al eliminar" }, { status: 500 });
   }
 }
-
